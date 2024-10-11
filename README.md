@@ -1,4 +1,4 @@
-### **Presentación del Laboratorio: Creación de un Helm Chart para el despliegue de los servicios Ratings y MysqlDB en Kubernetes**
+### **Laboratorio: Creación de un Helm Chart para el despliegue de los servicios Ratings y MysqlDB en Kubernetes**
 
 ---
 
@@ -10,13 +10,13 @@ En este laboratorio aprenderás a:
 
 ## Requisitos previos:
 Antes de comenzar el laboratorio, asegúrate de cumplir con los siguientes requisitos:
-1. Un clúster de **Kubernetes** en funcionamiento.
+1. Un clúster de **Kubernetes** en funcionamiento. Recomendamos el uso de **minikube**.
 2. **Helm** instalado en tu entorno de trabajo.
 3. Familiaridad con los conceptos básicos de Kubernetes y Helm.
 
 ## Instrucciones del laboratorio:
 
-En este laboratorio se te proporciona un **Helm chart** parcialmente completo. El archivo `values.yaml` ya tiene configuradas las definiciones necesarias para el correcto despliegue de las aplicaciones **Ratings** y **MysqlDB**. Además, **los parámetros para el StatefulSet de MySQL DB, el servicio `mysqldb-svc`, y los datos contenidos en la ConfigMap y los Secrets ya están definidos en el archivo `values.yaml`**. Por lo tanto, todas las implementaciones que crearás deberán estar **parametrizadas**, de manera que los valores correspondientes sean leídos directamente desde el archivo `values.yaml`.
+En este laboratorio se te proporciona un **Helm chart** parcialmente completo. El archivo `values.yaml` ya tiene configuradas las definiciones necesarias para el correcto despliegue de las aplicaciones **Ratings** y **MysqlDB**. Además, **los parámetros para el StatefulSet de MySQL DB, el Service `mysqldb-svc`, y los datos contenidos en la ConfigMap y los Secrets ya están definidos en el archivo `values.yaml`**. Por lo tanto, todas las implementaciones que crearás deberán estar **parametrizadas**, de manera que los valores correspondientes sean leídos directamente desde el archivo `values.yaml`.
 
 ### Archivos faltantes que deberás crear:
 
@@ -48,17 +48,23 @@ El laboratorio se divide en las siguientes fases:
    - Ejecutar los comandos de instalación para desplegar ambos servicios usando Helm.
 4. **Verificación del Despliegue**:
    - Verificar que ambos servicios se desplieguen correctamente utilizando `kubectl` y confirmar que los servicios están operativos.
-5. **Pruebas de funcionalidad**:
-   - Realizar pruebas para garantizar que tanto **Ratings** como **MysqlDB** están funcionando y se comunican adecuadamente.
+
+## Instrucciones:
+
+- Descarga el repositorio en tu entorno local.
+- En la carpeta **Lab** encontrarás el **Helm chart** incompleto.
+- Crea los nuevos archivos faltantes dentro de la carpeta **/lab/templates**.
+- En la carpeta **Solution** encontrarás los archivos que deberías haber definido, como referencia para comprobar tu trabajo.
 
 ## Comandos principales:
-- Creación del chart Helm:
+
+- Despliegue de las appliaciones con el chart Helm:
   \`\`\`bash
-  helm create ratings-mysqldb
+  helm install ratings ./lab
   \`\`\`
-- Despliegue de los servicios:
+- Actualización del chart Helm, con el consiguiente despliegue de la nueva versión de las aplicaciones:
   \`\`\`bash
-  helm install my-release ./ratings-mysqldb
+  helm upgrade ratings
   \`\`\`
 - Verificación del estado de los pods y servicios:
   \`\`\`bash
