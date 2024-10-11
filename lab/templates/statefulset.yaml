@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.deployment2.name }}-st
+  labels:
+    {{- include "lab.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment2.name }}
+  serviceName: {{ .Values.deployment2.name }}
+  replicas: {{ .Values.deployment2.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.deployment2.name }}
+    spec:
+      containers:
+      - name: {{ .Values.deployment2.name }}
+        image: "{{ .Values.deployment2.image.repository }}:{{ .Values.deployment2.image.tag | default .Chart.AppVersion }}"
+        args: ["--default-authentication-plugin", "mysql_native_password"]
+        env:
+          # Define the environment variable
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.secret.name }}
+                key: mysql_root_password
+        ports:
+        - containerPort: {{ .Values.service2.port }}
+        volumeMounts:
+        - name: state-volume
+          mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+  - metadata:
+      name: state-volume
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
