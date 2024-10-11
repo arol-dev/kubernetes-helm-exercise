@@ -1,4 +1,4 @@
-### **Laboratorio: Creación de un Helm Chart para el despliegue de los servicios Ratings y MysqlDB en Kubernetes**
+## **Lab: Creación de un Helm Chart para el despliegue de los servicios Ratings y MysqlDB en Kubernetes**
 
 ---
 
