@@ -42,7 +42,7 @@ En este laboratorio se te proporciona un **Helm chart** parcialmente completo. E
 El laboratorio se divide en las siguientes fases:
 1. **Completar el Chart Helm**:
    - Crear los archivos mencionados para completar el chart Helm y preparar el despliegue de **Ratings** y **MySQL DB**.
-2. **Configuración de los servicios**:
+2. **Configuración de los archivos/templates**:
    - Verificar las configuraciones en el archivo `values.yaml` para garantizar que ambas aplicaciones se desplieguen correctamente.
 3. **Despliegue en el clúster Kubernetes**:
    - Ejecutar los comandos de instalación para desplegar ambos servicios usando Helm.
@@ -59,17 +59,17 @@ El laboratorio se divide en las siguientes fases:
 ## Comandos principales:
 
 - Despliegue de las appliaciones con el chart Helm:
-  \`\`\`bash
+  ```bash
   helm install ratings ./lab
-  \`\`\`
+  ```
 - Actualización del chart Helm, con el consiguiente despliegue de la nueva versión de las aplicaciones:
-  \`\`\`bash
+  ```bash
   helm upgrade ratings
-  \`\`\`
+  ```
 - Verificación del estado de los pods y servicios:
-  \`\`\`bash
+  ```bash
   kubectl get all
-  \`\`\`
+  ```
 
 ## Conclusión:
 Al finalizar este laboratorio, serás capaz de crear, configurar y gestionar servicios distribuidos en Kubernetes utilizando **Helm**, y habrás completado el proceso para el despliegue de **Ratings** y **MysqlDB**, manejando tanto la configuración como los secretos de la aplicación, y desplegando la base de datos como un **StatefulSet**, todo de manera parametrizada según los valores definidos en `values.yaml`.
