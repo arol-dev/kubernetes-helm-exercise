@@ -70,6 +70,3 @@ El laboratorio se divide en las siguientes fases:
   ```bash
   kubectl get all
   ```
-
-## Conclusión:
-Al finalizar este laboratorio, serás capaz de crear, configurar y gestionar servicios distribuidos en Kubernetes utilizando **Helm**, y habrás completado el proceso para el despliegue de **Ratings** y **MysqlDB**, manejando tanto la configuración como los secretos de la aplicación, y desplegando la base de datos como un **StatefulSet**, todo de manera parametrizada según los valores definidos en `values.yaml`.
